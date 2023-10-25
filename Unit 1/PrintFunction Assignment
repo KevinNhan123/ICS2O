@@ -1,0 +1,7 @@
+BirthdayDate = 19801113
+
+Year = BirthdayDate // 10000
+Month = (BirthdayDate // 100) % 100
+Day = BirthdayDate % 100
+
+print("Year:", Year,"\nMonth:", Month,"\nDay:",Day)
