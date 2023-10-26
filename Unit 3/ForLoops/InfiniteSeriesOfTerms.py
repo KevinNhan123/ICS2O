@@ -15,7 +15,6 @@ print("This program will find the sum of a number of terms of a infinite series 
 termN = int(input("Please enter the amount of terms you would like added: "))
 valueX = float(input("Please enter the base value for x: "))
 print()
-
 #Loop
 for power in range(termN):
     sum = sum + valueX**(power)
