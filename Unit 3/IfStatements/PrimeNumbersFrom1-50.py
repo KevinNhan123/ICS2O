@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 #Constants and Variables
-AMTOFNUMS = 700
+AMTOFNUMS = 50
 factors = 0
 
 #Loop
-print("This program will output all the prime numbers from 1 to 50.\n")
+print("This program will output all the prime numbers from 1 to",AMTOFNUMS,"\n")
 
 print("Here is the list of prime numbers:\n")
 for num in range(AMTOFNUMS): #from 1 to the constant AMTOFNUMS
