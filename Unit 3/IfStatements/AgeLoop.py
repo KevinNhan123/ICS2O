@@ -8,6 +8,7 @@ Description: Prints even or odd numbers depending on your age
 age = 0
 
 #Asking the user for their age
+print("This program will start printing even or odd numbers depending on your age.\n")
 age = int(input("Please enter your age: "))
 
 #Loop
