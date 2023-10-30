@@ -31,12 +31,13 @@ if discriminant < 0:
     
 elif discriminant / 2 == discriminant // 2: #If the solution could have been factored
     print("The solution could have been factored")
-    x = (-b + math.sqrt(discriminant)) / 2*a
+    x = (-1*b + math.sqrt(discriminant)) / 2*a
     print("The solution is:", round(x,2))
-    x = (-b - math.sqrt(discriminant)) / 2*a
+    x = (-1*b - math.sqrt(discriminant)) / 2*a
     print("Or:", round(x,2))
 elif discriminant / 2 != discriminant // 2: #If it can't be factored
-    x = (-b + math.sqrt(discriminant)) / 2*a
+    x = (-1*b + math.sqrt(discriminant)) / 2*a
     print("The solution is:", round(x,2))
-    x = (-b - math.sqrt(discriminant)) / 2*a
+    x = (-1*b - math.sqrt(discriminant)) / 2*a
     print("Or:", round(x,2))
+    
