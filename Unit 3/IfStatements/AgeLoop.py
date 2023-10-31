@@ -19,3 +19,12 @@ for num in range(age):
     elif age / 2 == age // 2: #If it is even
         if (num+1) /2 == (num+1) // 2:
             print(num+1) #prints out all even numbers 
+            
+#A better version:
+'''
+age = int(input("Please enter your age: "))
+
+#age % 2 will either return 1 or 0
+for i in range(age % 2, age + 1, 2):
+    print(i)
+'''
