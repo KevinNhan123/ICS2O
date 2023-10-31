@@ -17,6 +17,10 @@ yCoord = float(input("Please enter the y coordinate: "))
 #Checks which quadrant the coords are in
 if xCoord == 0 and yCoord == 0:
     print("The coordinates ({0}, {1}) is the origin point.".format(xCoord, yCoord))
+elif xCoord == 0:
+    print("The coordinates is on the x axis.")
+elif yCoord == 0:
+    print("The coordinates is on the y axis")
 elif xCoord >= 0 and yCoord >= 0:
     print("The coordinates ({0}, {1}) are in the first quadrant.".format(xCoord, yCoord))
 elif xCoord <= 0 and yCoord >= 0:
