@@ -30,4 +30,4 @@ for newX in range(0,6):
         y = "y= "+str(y)
         answer = "Answer: "+str(round(answer,2))
         
-        print("{0:5} {1:10} {2:10}".format(x,y,answer))
+        print("{0:10} {1:10} {2:10}".format(x,y,answer))
