@@ -47,8 +47,12 @@ while turn <= 2: #This will continue looping until plr two finds a sum of 4 or l
     
     #Outputs result
     if sum <= 4: #If plr one receives a sum of 4 or less, it will be plr two's turn. If plr two receives a sum of 4 or less, the loop will end
-        print("Nice one! Your sum of the two rolls is",sum,"It is now "+plrTwoName+"'s turn!")
+        print("Nice one! Your sum of the two rolls is",sum)
         turn += 1
+        if turn >= 3:
+            continue
+        else:
+            print("It is now "+plrTwoName+"'s turn!")
     else:
         print("You rolled the numbers",rollOne,"and",rollTwo,"! The sum of those two rolls is",sum)
 
