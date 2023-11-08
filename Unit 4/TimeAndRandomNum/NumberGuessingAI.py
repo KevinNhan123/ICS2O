@@ -33,10 +33,11 @@ while highRange < randomNum: #Makes sure that the highRange is not lower than th
 while guess != randomNum:
     attempts += 1
     guess = random.randint(lowRange,highRange)
-    while guess > randomNum: #If the guess is greater than the random number, it will keep guessing a new random number until it finds a number that is lower than the random number
+    while guess > randomNum: #If the guess is greater than the random number, it will set the high range to the guess and find a new random number
+        highRange = guess
         guess = random.randint(lowRange,highRange)
     
-    if guess < randomNum: #If the guess is lower than the random number, it will set the lowrange to the guess and find a new random number
+    if guess < randomNum: #If the guess is lower than the random number, it will set the low range to the guess and find a new random number
         lowRange = guess+1
         guess = random.randint(lowRange,highRange)
     
