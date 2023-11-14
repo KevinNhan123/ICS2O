@@ -12,8 +12,9 @@ GUESSES = 3
 
 guess = 0
 
-word = "Imagine"
-scrambledWord = 0
+originalWord = "Imagine"
+word = originalWord
+scrambledWord = ""
 
 randomLetter = 0
 
@@ -21,22 +22,26 @@ randomLetter = 0
 print("This is a word scrambler program. The player will be given 3 guesses to determine the original word.\n")
 
 #Scrambles the word
-scrambledWord = "".join(random.sample(word, len(word))).lower()
+for i in range(len(originalWord)):
+    randomLetter = random.randint(0, len(word)-1)
+    
+    scrambledWord = word[randomLetter] + scrambledWord
+    word = word[:randomLetter] + word[randomLetter + 1:]
 
 #Loop
-print("The scrambled word is", scrambledWord)
+print("The scrambled word is", scrambledWord.lower())
 for attempt in range(GUESSES):
     guess = input("\nGuess the original word: ").lower()
-    while (not word.isalpha()): #Checks if word has anything other than letters
+    while (not guess.isalpha()): #Checks if guess has anything other than letters
         guess = input("\nGuess the original word: ").lower()
-    if guess == word.lower():
-        print("Congrats! You guessed the word!, the original word is",guess)
+    if guess == originalWord.lower():
+        print("Congrats! You guessed the word!, the original word is",originalWord)
         break
     else:
         print("Your guess was not the original word!")
 
 #Outputs result
 print()
-if guess != word.lower():
-    print("Nice try, the word was",word,"better luck next time.")
+if guess != originalWord.lower():
+    print("Nice try, the word was",originalWord,"better luck next time.")
 print("Thank you for using this program.")
