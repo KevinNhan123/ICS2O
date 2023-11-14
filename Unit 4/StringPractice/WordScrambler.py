@@ -10,29 +10,33 @@ import random
 #Constants and Variables
 GUESSES = 3
 
-originalWord = 0
-word = 0
-scrambledWord = ""
+guess = 0
+
+word = "Imagine"
+scrambledWord = 0
 
 randomLetter = 0
 
 #Asks user for the word
 print("This is a word scrambler program. The player will be given 3 guesses to determine the original word.\n")
 
-word = input("Please enter a word: ")
-originalWord = word
-
 #Scrambles the word
-word = "Tennis"
+scrambledWord = "".join(random.sample(word, len(word))).lower()
 
-print(word)
-word = word.replace("n","")
-print(word)
-"""for letter in word:
-    randomLetter = word[random.randint(0,len(word))]
-    scrambledWord = randomLetter + scrambledWord
-    word = word.replace(randomLetter,"")
-    print(word)
+#Loop
+print("The scrambled word is", scrambledWord)
+for attempt in range(GUESSES):
+    guess = input("\nGuess the original word: ").lower()
+    while (not word.isalpha()): #Checks if word has anything other than letters
+        guess = input("\nGuess the original word: ").lower()
+    if guess == word.lower():
+        print("Congrats! You guessed the word!, the original word is",guess)
+        break
+    else:
+        print("Your guess was not the original word!")
 
-print(word,scrambledWord,originalWord)
-"""
+#Outputs result
+print()
+if guess != word.lower():
+    print("Nice try, the word was",word,"better luck next time.")
+print("Thank you for using this program.")
