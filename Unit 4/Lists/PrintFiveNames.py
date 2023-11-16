@@ -21,7 +21,7 @@ for i in range(5):
     names.append(name)
 
 #Reverses the list
-names.sort(reverse=True)
+names.reverse()
 
 #Outputs result
 print("\nHere are all your names in reverse order.")
