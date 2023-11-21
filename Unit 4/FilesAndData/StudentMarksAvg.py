@@ -6,7 +6,7 @@ to a new file.
 """
 
 #Files
-studentMarks = open("StudentMarks.txt", "a")
+studentMarks = open("Y:\\ICD2O\\Unit 4\\FilesAndData\\StudentMarks.txt", "w")
 
 #Constants and Variables
 AMTOFMARKS = 4
@@ -43,6 +43,7 @@ for student in range(amtOfStudents):
     names.append(name)
     
     #Loop - Finds marks
+    avgMark = 0
     for i in range(AMTOFMARKS):
         print("Mark #"+str(i+1))
         
@@ -55,7 +56,7 @@ for student in range(amtOfStudents):
         avgMark += mark #Acts as an accumulator
         
     #Calculates avgMark
-    avgMark = avgMark / 4
+    avgMark = avgMark / AMTOFMARKS
     marks.append(avgMark)
 
 #Outputs results
@@ -67,7 +68,7 @@ for student in range(len(names)):
 #Saves results to file
 print("\nSaving data to file...")
 for student in range(len(names)):
-    studentMarks.write("\n"+names[student] + str(" ") + str(marks[student])) #Writes all student names and avg marks into file
+    studentMarks.write("Name: "+ names[student] + str(", Average Mark: ") + str(marks[student]) + str("%\n")) #Writes all student names and avg marks into file
     
 studentMarks.close() #Saves file
 print("Saved successfully.")
