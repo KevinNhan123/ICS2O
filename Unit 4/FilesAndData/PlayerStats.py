@@ -56,7 +56,9 @@ if loadData != "Y":
         playerStats.write(stats[stat]+": "+stats[len(stats)-3+stat]+"\n")
     playerStats.close()
     print("Saved data successfully.")
-else:
+    
+else: #If the user does load their data
     print("\nHere are your stats:\n")
+    
     playerStats = open("Y:\\ICD2O\\Unit 4\\FilesAndData\\PlayerStats.txt", "r")
     print(playerStats.read())
