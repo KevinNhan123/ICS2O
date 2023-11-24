@@ -2,6 +2,8 @@
 Name: Kevin Nhan
 Date: November 22 2023
 Description: My quiz summative, it will be a quiz that contains 6 questions
+
+NOTE: I am using an extension that changes the colour of comments based on the tag I added to them, that is why there are "!", "?" and "*" on most of my comments
 """
 
 #! Libraries
@@ -25,7 +27,6 @@ grade = 0
 
 #* User related
 prompt = 0
-
 extraTries = False
 
 questions = [
