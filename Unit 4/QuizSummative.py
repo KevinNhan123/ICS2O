@@ -11,15 +11,19 @@ import time
 MAXTRIES = 2
 OPTIONS = "1234"
 
-quizRun = True
+quizRun = "Y"
 
-#Information for file
+#* Information for file
+results = open("QuizSummative_RESULTS.txt", "a")
+
+attempts = 0
+
 correct = []
 incorrect = []
 
-questionsAnswered = 0
+grade = 0
 
-#User related
+#* User related
 prompt = 0
 
 extraTries = False
@@ -56,18 +60,32 @@ questions = [
     ],
     ];
 
-#Loop
-while quizRun == True:
+#? Loop
+while quizRun == "Y":
+    #? Resets variables before starting quiz
+    correct = []
+    incorrect = []
+    
+    results = open("QuizSummative_RESULTS.txt", "r")
+    if results != "": #! If there is something in the file
+        attempts = results.read()[-3] #Finds the last attempt in the file
+        attempts = int(attempts) #Sets that attempt as the new attempt
+
     #* Gives context to the user
+    print("**ATTEMPT:",attempts+1,"**")
+    
     print("\nWelcome to my quiz, this quiz is about Python programming.")
+    time.sleep(0.5)
     print("You will be given six total questions to answer.")
     print("Two questions will be ordinary multiple choice")
+    time.sleep(2)
     print("Two will be multiple choice but you will be given 2 tries to get them correct")
     print("And two will be fill-in-the-blank questions.\n")
+    time.sleep(2)
 
     print("Good luck!")
     
-    #! Loops through the questions
+    #? Loops through the questions
     for question in range(len(questions)):
         time.sleep(2)
         print("\nQUESTION NUMBER",question+1)
@@ -79,54 +97,106 @@ while quizRun == True:
                 time.sleep(0.5)
                 print(str(option+1)+".", questions[question][1][option]) #Prints out all the options for the question
 
-            #Checks if the question allows for extra tries
+            #? Checks if the question allows for extra tries
             try: #This is used because for some of the questions in the list, MAXTRIES is not defined in the list so it will output an error. This is like a safety net, if there is no MAXTRIES in the list, it will set extraTries to False
                 if questions[question].index(MAXTRIES) == 3:
                     extraTries = True
             except ValueError:
                 extraTries = False
             
-            #Asks user for prompt
-            if extraTries == True: #If the question is one of the harder multiple choice questions
+            #? Asks user for prompt
+            time.sleep(1)
+            if extraTries == True: #? If the question is one of the harder multiple choice questions
                 print("\nThis is a hard multiple choice question! You get two tries!")
+                time.sleep(0.5)
                 for i in range(MAXTRIES):
                     prompt = input("\nPlease chose an option: ")
                     while not prompt in OPTIONS: #Checks if prompt is not one of the options
                         print("Your choice was invaild!")
                         prompt = input("Please chose an option: ")
                         
-                    #Checks if the prompt matches up with the answer
+                    #? Checks if the prompt matches up with the answer
                     if prompt == questions[question][2]:
-                        correct.append(question) #Adds question to correct list
+                        correct.append(question) #* Adds question to correct list
                         print("\nNice! You got the question correct!")
                         break
-                    else: #If the user did not answer the question correctly (If the question is not in the correct list)
+                    else: #! If the user did not answer the question correctly (If the question is not in the correct list)
                         print("\nIncorrect!")
                     
                 if prompt != questions[question][2]: #After the two tries, if the last prompt was incorrect then the question is added to the incorrect list
                     incorrect.append(question)
                 
-            else: #If it is regular multiple choice
+            else: #? If it is regular multiple choice
                 prompt = input("\nPlease chose an option: ")
                 while not prompt in OPTIONS: #Checks if prompt is not one of the options
                     print("Your choice was invaild!")
                     prompt = input("Please chose an option: ")
                 
-                #Checks if it is correct
+                #* Checks if it is correct
                 if prompt == questions[question][2]:
                     correct.append(question) #Adds question to correct list
                     print("\nNice! You got the question correct!")
-                else: #If it is incorrect
+                else: #! If it is incorrect
                     incorrect.append(question)
                     print("\nIncorrect!")
         
-        else: #If the question is a fill-in-the-blanks
-            prompt = input("\nPlease enter an answer: ").lower()
+        else: #? If the question is a fill-in-the-blanks
+            time.sleep(1)
+            prompt = input("Please enter an answer: ").lower()
             
-            #Checks if prompt is correct
+            #* Checks if prompt is correct
             if prompt == questions[question][1]:
                 correct.append(question)
                 print("\nNice! You got the question correct!")
-            else: #If it is incorrect
+            else: #! If it is incorrect
                 incorrect.append(question)
                 print("\nIncorrect!")
+    
+    #? Outputs results and saves results after quiz is over
+    print("-------------------QUIZ OVER-------------------")
+    time.sleep(1)
+    print("\nGood job! You completed the quiz!")
+    time.sleep(1)
+    print("Here are your results:\n")
+    time.sleep(0.5)
+    
+    results = open("QuizSummative_RESULTS.txt", "a")
+    results.write("----------------CORRECT ANSWERS----------------\n")
+    
+    print("----------------CORRECT ANSWERS----------------")
+    for question in correct: #* Outputs all correct answers
+        time.sleep(0.5)
+        print("Question "+ str(question+1) + ": ", questions[question][0])
+        results.write("Question "+ str(question+1) + ": "+questions[question][0]+"\n\n")
+        print()
+    
+    time.sleep(1)
+    print("You got",len(correct),"out of",len(questions),"correct!\n")
+    results.write("You got " + str(len(correct)) + " out of " + str(len(questions)) + " correct!\n\n")
+    time.sleep(0.5)
+    results.write("---------------INCORRECT ANSWERS---------------\n")
+    
+    print("---------------INCORRECT ANSWERS---------------")
+    for question in incorrect: #! Outputs all incorrect answers
+        time.sleep(0.5)
+        print("Question "+ str(question+1) + ": ", questions[question][0])
+        results.write("Question "+ str(question+1) + ": "+questions[question][0]+"\n\n")
+        print()
+    
+    time.sleep(1)
+    print("You got",len(incorrect),"incorrect!\n")
+    results.write("You got " + str(len(incorrect)) + " incorrect!\n")
+    time.sleep(0.5)
+    
+    #? Tells user their grade
+    grade = (len(correct) / len(questions)) * 100
+    print("Your grade is: {0:.2f}%".format(grade))
+    results.write("Your grade is: " + str(grade) + "%\n")
+    results.write("ATTEMPT " + str(attempts+1)+"\n\n")
+    results.close()
+    
+    #? Asks user if they would like to re-do the quiz
+    quizRun = input("Would you like to re-do the quiz? (Y/N): ").upper()
+
+#! End of program
+print("\nThank you for doing my quiz!")
