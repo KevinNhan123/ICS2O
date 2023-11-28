@@ -59,7 +59,7 @@ questions = [
     
     ["______ is an amazing and easy-to-learn. With ______, I made this awesome quiz about ______!", #? Last Question [5][0]
      "python" #? Answer [5][1]
-    ],
+    ]
     ];
 
 #? Loop
