@@ -119,10 +119,10 @@ while quizRun == "Y":
                 print("\nThis is a hard multiple choice question! You get two tries!")
                 
             for i in range(extraTries):
-                prompt = input("\nPlease chose an option: ")
+                prompt = input("\nPlease choose an option: ")
                 while not prompt in OPTIONS: #Checks if prompt is not one of the options
-                    print("Your choice was invaild!")
-                    prompt = input("Please chose an option: ")
+                    print("Your choice was invalid!")
+                    prompt = input("Please choose an option: ")
                     
                 #? Checks if the prompt matches up with the answer
                 if prompt == questions[question][1]:
