@@ -27,7 +27,10 @@ def getIntRange(min,max):
         num = input("Please enter a number: ")
         if num.isnumeric() == True:
             num = int(num)
-    
+        while not(num.isnumeric()):
+            print("You did not enter an integer!")
+            num = input("Please enter a number: ")
+        num = int(num)
     #If number passes through all validity loops
     return num
 
