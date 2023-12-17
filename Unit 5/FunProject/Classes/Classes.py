@@ -13,17 +13,18 @@ class Present:
     
     def __init__(self, name):
         self.name = name
-        self.value = 3
+        self.value = None
+        self.defaultValue = 3
     
-    def pointsValue(self):
+    def getValue(self):
         if self.name[-1].isnumeric():
             if int(self.name[-1]) <= len(presentValues)-1:     
                 self.value = presentValues[int(self.name[-1])]
+                print("\nIdenifier found! Returning present value...")
                 return self.value
-            else:
-                return self.value
-        else:
-            return self.value
+        
+        print("\nCould not find the idenifier at the end! Returning default value...")
+        return self.defaultValue
 
 class Character:
     """This class defines the character. It has the core functions and attributes for the character."""
@@ -36,16 +37,16 @@ class Character:
         self.MAXITEMS = 5
         self.points = 0
     
-    def addPresent(self, presentName):
+    def addPresent(self, present):
         """This function will add a present to the character's inventory.
             There is a limit of five presents.
         """
         
         if len(self.inv) < self.MAXITEMS:
-            self.inv.append(presentName)
-            print(f"{self.name} has gained the present, {presentName}!")
+            self.inv.append(present)
+            print(f"\n{self.name} has gained the present, {present.name}!")
         else:
-            print(f"{self.name} cannot hold anymore presents!")
+            print(f"\n{self.name} cannot hold anymore presents!")
     
     def givePresent(self):
         """This function will remove all presents from the character's inventory and give them over to Santa.
@@ -54,17 +55,16 @@ class Character:
         
         if len(self.inv) != 0:
             for present in range(len(self.inv)):
-                self.inv[present] = Present(self.inv[present])
-                self.points += self.inv[present].pointsValue()
+                self.points += self.inv[present].getValue()
                 
                 print("Updated points:",self.points)
             self.inv.clear()
-            print(f"{self.name}'s inventory has been wiped!")
+            print(f"\n{self.name}'s inventory has been wiped!")
         else:
-            print(f"{self.name} does not have any presents!")
+            print(f"\n{self.name} does not have any presents!")
         
     def changeSpeed(self, value):
         """This function requires a value for a change in the characters speed."""
         
-        self.speed = value
-        print(f"{self.name} feels like they gained a plus {self.speed} speed boost!")
+        self.speed += value
+        print(f"\n{self.name} feels like they gained a plus {value} speed boost! {self.name} now has the speed {self.speed}!")
