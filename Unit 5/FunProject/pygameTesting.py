@@ -28,15 +28,3 @@ while not done:
         if event.type == pygame.QUIT: #When the user clicks on the "X" button
             done = True
             
-    fill("white")
-    draw("line",(60, 179, 113), [0, 0], [50, 30], 5)
-    draw("rectangle","black", [75, 10], [50, 20], 2)
-    draw("rectangle",(0, 0, 0), [150, 10], [50, 20])
-    draw("rectangle", "green", [115, 210], [70, 40], 10)
-    draw("polygon", "black", [[100, 100], [0, 200], [200, 200]], 5)
-    draw("circle", "blue", [60, 250], 40)
-
-    pygame.display.flip()
-
-#End of program
-pygame.quit()
