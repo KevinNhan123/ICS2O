@@ -9,5 +9,5 @@ fps = 60
 size = (800,400)
 
 # Player settings
-speed = 1 # Default speed
+speed = 3 # Default speed
 maxInvSize = 5 # Default inventory size
