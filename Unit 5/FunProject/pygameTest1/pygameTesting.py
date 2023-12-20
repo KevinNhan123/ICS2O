@@ -49,16 +49,15 @@ while done != True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]: #If the user holds the W key
         player.move(player.speed)
-        player.animate("Walk", 0.07)
     elif keys[pygame.K_s]:
         player.move(-1*player.speed)
-        player.animate("Walk", 0.07)
     
-    screen.fill((255,255,255))
+    screen.fill((70,70,70))
     
     #Drawing the player
     SpriteGroup.draw(screen)
     screen.blit(text, textRect)
+    screen.blit(pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\present.png")), (100,100))
     
     pygame.display.flip()
     clock.tick(fps)
