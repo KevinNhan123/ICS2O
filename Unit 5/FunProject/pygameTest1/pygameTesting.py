@@ -34,11 +34,17 @@ pygame.display.set_caption("12/25: Santa's Present Hunt")
 #Setting up the player
 player = Player("Roman", speed)
 
-SpriteGroup = pygame.sprite.GroupSingle()
-SpriteGroup.add(player)
+plrGroup = pygame.sprite.Group()
+plrGroup.add(player)
 
 text = textFont.render("Points: ", False, RED)
 textRect = text.get_rect(center = (400,80))
+
+# Presents
+presentOne = Present("small_present_0")
+
+presentGroup = pygame.sprite.Group()
+presentGroup.add(presentOne)
 
 while done != True:
     # Events handler
@@ -55,9 +61,14 @@ while done != True:
     screen.fill((70,70,70))
     
     #Drawing the player
-    SpriteGroup.draw(screen)
+    plrGroup.draw(screen)
     screen.blit(text, textRect)
-    screen.blit(pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\present.png")), (100,100))
+
+    presentGroup.draw(screen)
+    
+    hit = pygame.sprite.spritecollide(player, presentGroup, True)
+    if hit:
+        print("True")
     
     pygame.display.flip()
     clock.tick(fps)

@@ -32,7 +32,7 @@ class Present(pygame.sprite.Sprite):
         self.name = name
         
         self.image = pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\present.png").convert_alpha()) # Base image
-        self.rect = self.image.get_rect(center = (100,100))
+        self.rect = self.image.get_rect(center = (400, 300))
         
         self.value = 0
         self.defaultValue = 30
@@ -47,11 +47,13 @@ class Present(pygame.sprite.Sprite):
         print("\nCould not find the idenifier at the end! Returning default value...")
         return self.defaultValue
 
+    
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, name, speed):
         super().__init__()
         self.image = pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\player.png").convert_alpha()) # Base image
-        self.rect = self.image.get_rect(midbottom = (200, 300))
+        self.rect = self.image.get_rect(center = (200, 300))
         
         self.name = name
         self.speed = speed
