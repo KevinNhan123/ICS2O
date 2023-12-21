@@ -31,8 +31,10 @@ class Present(pygame.sprite.Sprite):
         super().__init__()
         self.name = name
         
-        self.image = pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\present.png").convert_alpha()) # Base image
-        self.rect = self.image.get_rect(center = (400, 300))
+        self.pos = pygame.math.Vector2()
+        
+        self.image = pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\medium_present.png").convert_alpha()) # Base image
+        self.rect = self.image.get_rect(center = self.pos)
         
         self.value = 0
         self.defaultValue = 30
@@ -47,6 +49,10 @@ class Present(pygame.sprite.Sprite):
         print("\nCould not find the idenifier at the end! Returning default value...")
         return self.defaultValue
 
+    def spawn(self, image, posXY):
+        self.pos = pygame.math.Vector2(posXY)
+        self.image = pygame.transform.scale2x(pygame.image.load(image).convert_alpha())
+        self.rect = self.image.get_rect(center = self.pos)
     
 
 class Player(pygame.sprite.Sprite):
@@ -58,14 +64,27 @@ class Player(pygame.sprite.Sprite):
         self.name = name
         self.speed = speed
         
+        self.points = 0
+        
         self.inv = []
         
         self.walkingSprites = Animation([pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\player.png").convert_alpha()),
-                               pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\player@2x.png").convert_alpha())])
+                               pygame.transform.scale2x(pygame.image.load("Unit 5\\FunProject\\pygameTest1\\Graphics\\Sprites\\player@2x.png").convert_alpha())]) 
     
-    def move(self, value):
-        self.rect.centerx += value
-        self.walkingSprites.animate(0.07, self)
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            self.rect.centery -= self.speed
+            self.walkingSprites.animate(0.07, self)
+        if keys[pygame.K_a]:
+            self.rect.centerx -= self.speed
+            self.walkingSprites.animate(0.07, self)
+        if keys[pygame.K_s]:
+            self.rect.centery += self.speed
+            self.walkingSprites.animate(0.07, self)
+        if keys[pygame.K_d]:
+            self.rect.centerx += self.speed
+            self.walkingSprites.animate(0.07, self)
         
     def addPresent(self):
         pass

@@ -9,7 +9,7 @@ fps = 60
 size = (800,400)
 
 # Present Settings
-presentValues = [30,50,100]
+presentValues = [30,50,100,10000]
 
 # Player settings
 speed = 3 # Default speed
