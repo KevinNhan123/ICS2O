@@ -5,8 +5,7 @@ Description: Testing with pygame
 """
 
 # Libraries
-from turtle import pen
-import pygame, math, random
+import pygame, math, random, time
 from Functions import *
 from Settings import *
 from Classes import *
@@ -99,8 +98,19 @@ while done != True:
     screen.blit(textFont.render(f"Points: {player.points}", False, RED), textRect)
     
     presentCollision = pygame.sprite.spritecollide(player, presentGroup, True)
+        
     for present in presentCollision:
         player.points += present.getValue()
+        # Detects collisions
+        '''if present.pos[0] - player.rect.centerx < 3:
+            player.rect.centerx += 5
+        else:
+            player.rect.centerx -= 5
+        
+        if present.pos[1] - player.rect.centery < 3:
+            player.rect.centery += 5
+        else:
+            player.rect.centery -= 5'''
     
     pygame.display.flip()
     clock.tick(fps)

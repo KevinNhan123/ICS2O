@@ -76,13 +76,13 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_w]:
             self.rect.centery -= self.speed
             self.walkingSprites.animate(0.07, self)
-        if keys[pygame.K_a]:
+        elif keys[pygame.K_a]:
             self.rect.centerx -= self.speed
             self.walkingSprites.animate(0.07, self)
-        if keys[pygame.K_s]:
+        elif keys[pygame.K_s]:
             self.rect.centery += self.speed
             self.walkingSprites.animate(0.07, self)
-        if keys[pygame.K_d]:
+        elif keys[pygame.K_d]:
             self.rect.centerx += self.speed
             self.walkingSprites.animate(0.07, self)
         
